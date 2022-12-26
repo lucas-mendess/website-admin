@@ -1,6 +1,6 @@
 <?php
 
-require "../../database/Connect.php";
+require "../../db/Database.php";
 
 class Users
 {
@@ -8,10 +8,10 @@ class Users
 
     public function fetch()
     {
-        $conection = new Connect();
-        $this->connect = $conection->conn();
+        $conection = new Database();
+        $this->connect = $conection->connect();
 
-        $query = "SELECT * FROM users ORDER BY id LIMIT 10";
+        $query = "SELECT * FROM users ORDER BY id DESC LIMIT 10";
 
         $result = $this->connect->prepare($query);
         $result->execute();
