@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  apache:
+    build: .
+    depends_on: 
+      - mysql
+    image: php:8.1-apache
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - .:/var/www/html
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: lamp_docker
+      MYSQL_USER: root_
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root_
+    
+  phpmyadmin:
+    depends_on: 
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
