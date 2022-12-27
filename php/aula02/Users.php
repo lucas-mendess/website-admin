@@ -2,22 +2,32 @@
 
 require "../../db/Database.php";
 
-class Users
+class Users extends Database
 {
-    private $connect;
-
-    public function fetch()
+    public function fetch(): array
     {
-        $conection = new Database();
-        $this->connect = $conection->connect();
-
         $query = "SELECT * FROM users ORDER BY id DESC LIMIT 10";
 
-        $result = $this->connect->prepare($query);
+        $result = $this->connect()->prepare($query);
         $result->execute();
 
-        $data = $result->fetchAll();
+        return $result->fetchAll();
+    }
 
-        return $data;
+    public function create(array $form): bool
+    {
+        $query = "INSERT INTO users (name, email) VALUES (:name, :email)";
+
+        $createUser = $this->connect()->prepare($query);
+        $createUser->bindParam(":name", $form['name']);
+        $createUser->bindParam(":email",  $form['email']);
+
+        $createUser->execute();
+
+        if ($createUser->rowCount()) {
+            return true;
+        }
+
+        return false;
     }
 }

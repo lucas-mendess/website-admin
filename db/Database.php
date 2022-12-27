@@ -1,13 +1,13 @@
 <?php
 
-class Database
+abstract class Database
 {
-    private $host = "mysql";
-    private $user = "root";
-    private $password = "root";
-    private $dbname = "lamp_docker";
-    private $port = 3306;
-    private $connect;
+    private string $host = "mysql";
+    private string $user = "root";
+    private string $password = "root";
+    private string $dbname = "lamp_docker";
+    private int $port = 3306;
+    private object $connect;
 
     public function connect()
     {
