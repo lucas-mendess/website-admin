@@ -13,8 +13,9 @@ abstract class Database
     {
         try {
             $config_db = "mysql:dbname={$this->dbname};host={$this->host};port={$this->port};";
+            $options = [PDO::MYSQL_ATTR_INIT_COMMAND => "SET time_zone = 'America/Sao_Paulo'"];
 
-            $this->connect = new PDO($config_db, $this->user, $this->password);
+            $this->connect = new PDO($config_db, $this->user, $this->password, $options);
 
             return $this->connect;
         } catch (\Exception $e) {

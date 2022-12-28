@@ -37,12 +37,12 @@ ob_start();
 </body>
 
 <?php
-require "./Users.php";
+require "./User.php";
 
 $form = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if ($form) {
-    $user = new Users();
+    $user = new User();
     $result = $user->create($form);
 
     if ($result) {
@@ -53,7 +53,6 @@ if ($form) {
         echo "<p style='color:red'>Ocorreu um erro ao criar</p>";
     }
 }
-
 ?>
 
 </html>
