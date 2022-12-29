@@ -73,6 +73,16 @@ class User extends Database
         return array();
     }
 
+    public function delete(int $id): bool
+    {
+        $query = "DELETE FROM users WHERE id = :id LIMIT 1";
+
+        $deleteUser = $this->connect()->prepare($query);
+        $deleteUser->bindParam(":id", $id);
+
+        return $deleteUser->execute();
+    }
+
     public function formatDate($date): string
     {
         return date('d/m H:i', strtotime($date));

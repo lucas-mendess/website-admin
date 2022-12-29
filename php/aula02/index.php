@@ -35,7 +35,8 @@ session_start();
         echo "Nome: {$user['name']}  <br/>";
         echo "Email: {$user['email']}  <br/>";
         echo "<a href='view.php?id={$user['id']}'>Visualizar</a> <br>";
-        echo "<a href='edit.php?id={$user['id']}'>Editar</a>";
+        echo "<a href='edit.php?id={$user['id']}'>Editar</a> <br>";
+        echo "<a href='delete.php?id={$user['id']}'>Apagar</a>";
         echo "<hr>";
     }
     ?>
