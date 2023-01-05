@@ -1,0 +1,16 @@
+{
+    "description": "Lucas PHP OO",
+    "authors": [
+        {
+            "name": "Lucas Mendes",
+            "email": "lucas_fernandomendes@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "Config\\": "config"
+        }
+    },
+    "require": {}
+}
