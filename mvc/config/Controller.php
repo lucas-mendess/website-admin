@@ -31,7 +31,6 @@ class Controller
     public function loadPage()
     {
         $classLoad = "\\App\\Controllers\\" . ucwords($this->urlController);
-        echo $classLoad ."<br>";
         $classPage = new $classLoad();
         $classPage->index();
     }
